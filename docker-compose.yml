@@ -1,0 +1,25 @@
+version: '3'
+services:
+  item_crawler:
+    build: ./myproject
+    links:
+     - redis
+    depends_on:
+     - redis
+  summary_crawler:
+    build: ./JD_summaries
+    links:
+     - redis
+    depends_on:
+     - redis
+  comment_crawler:
+    build: ./JD_comments
+    links:
+     - redis
+    depends_on:
+     - redis
+  redis:
+    image: redis
+    ports:
+    - "6379:6379"
+
